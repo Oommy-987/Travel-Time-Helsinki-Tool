@@ -1,9 +1,10 @@
 
 ### Prupose of the tool
-This is a GIS tool desgined to visualize and compare the travel tiem data from the Helsinki Region Travel Time Matrix (2013, 2015, and 2018). The dataset can be downloaded [here](https://blogs.helsinki.fi/accessibility/helsinki-region-travel-time-matrix/). This tools allow users to visualize 
+This is a GIS tool desgined to visualize and compare the travel time data from the Helsinki Region Travel Time Matrix (2013, 2015, and 2018). The dataset can be downloaded [here](https://blogs.helsinki.fi/accessibility/helsinki-region-travel-time-matrix/). This tools allow users to visualize 
 - the travel time of different travel mode
 - compare the travel time difference between different mode contained in the same travel time file
 - compare the travel time/distance difference between travel time file from two different years
+- compute the shortest travel distance by bike, walk and car
 
 ### Structure of this repository:
 This repository consists of a [Jupyter notebook](TravelTimeTool.ipynb) and a [function.py file](function.py). Inside the function.py file, Function 1 creates an interactive YKR grid index map, and Function 29 serves as the Access Viz tool. Function 30, which present the additional function of this tool, uses to visualize shortest path routes (walking, cycling, and/or driving) using OpenStreetMap data. All remaining functions are used within the Access Viz tool for data input, processing, and map visualization.
