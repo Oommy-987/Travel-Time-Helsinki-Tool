@@ -1,7 +1,7 @@
 
 ### Prupose of the tool
-This is a GIS tool desgined to visualize and compare the travel time data from the Helsinki Region Travel Time Matrix (2013, 2015, and 2018). The dataset can be downloaded [here](https://blogs.helsinki.fi/accessibility/helsinki-region-travel-time-matrix/). This tools allow users to visualize 
-- the travel time of different travel mode
+This is a GIS tool desgined to visualize and compare the travel time data from the Helsinki Region Travel Time Matrix (2013, 2015, and 2018). The dataset can be downloaded [here](https://blogs.helsinki.fi/accessibility/helsinki-region-travel-time-matrix/). This tools allow users to 
+- visualize the travel time of different travel mode
 - compare the travel time difference between different mode contained in the same travel time file
 - compare the travel time/distance difference between travel time file from two different years
 - compute the shortest travel distance by bike, walk and car
