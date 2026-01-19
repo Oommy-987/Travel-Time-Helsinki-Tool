@@ -17,7 +17,7 @@ The MetropAccess-YKR-grid.shp and HSL Transif Zone.gpkg file are also saved insi
 Data from OpenStreetMap data is used to calculate the shortest path route. 
 
 ### Analysis steps:
-The first step in the Access Viz tool is to ensure that all input parameters follow the required format defined in the code. All assertion‑related checks are implemented in Function 28, which raises an assertion error if any parameter is invalid. If the travel‑time file contains no data, or if the selected transport mode has no data within that file, an assertion error is raised. Refer to [Jupyter notebook](final-assignment.ipynb) for more guidance.
+The first step in the Access Viz tool is to ensure that all input parameters follow the required format defined in the code. All assertion‑related checks are implemented in Function 28, which raises an assertion error if any parameter is invalid. If the travel‑time file contains no data, or if the selected transport mode has no data within that file, an assertion error is raised. Refer to [Jupyter notebook](TravelTimeTool.ipynb) for more guidance.
 
 Once the input parameters are validated, the tool retrieves the travel‑time data file from the [data folder](data/) and joins it with the `YKR grid` to create a GeoDataFrame. The `vector_type` and `vector_output_folder` allows the users to export the file as a `.shp` or `.gpkg` file in a defined folder. The tool then generate the map of the specified `transport_mode` in each item of `year_ykr`. The map can be either a static or interactive map based on `map_type`. The user can define the map output folder in `map_output_folder`.
 
