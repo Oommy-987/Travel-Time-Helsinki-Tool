@@ -1,39 +1,3 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/tWyQ2Yyn)
-# Final Assignment
-
-### Status
-
-Once you are finished with the final assignment, edit this readme and add "x" to the correct box:
-
-* [x] Submitted
-
-* [ ] I'm still working on my final assignment. 
-
-
-*If you have done this assignment in pair, write your groupmate's name here:* ----
-
-The final deadline for submission is **6.1.2026**.
-
-
-### Instructions
-
-*you can remove these instructions for the final submission*
-
-Read the final assignment instructions from the course webpages [https://autogis-site.readthedocs.io](https://autogis-site.readthedocs.io/en/latest/final-assignment/final-assignment.html). Remember to write readable code, and to provide adequate documentation using inline comments and markdown. Organize all your code(s) / notebook(s) into this repository and **add links to all relevant files to this `README.md`file**. In sum, anyone who downloads this repository should be able to **read your code and documentation** and understand what is going on, and **run your code** in order to reproduce the same results! :) 
-
-**Modify this readme so that anyone reading it gets a quick overview of your final work topic, and finds all the necessary input data, code and results.** 
-
-*Note: If your code requires some python packages not found in the csc notebooks environment, please mention them also in this readme and provide installation instrutions.*
-
-*Note: Don't upload large files into GitHub! If you are using large input files, provide downloading instructions and perhaps a small sample of the data in this repository for demonstrating your workflow.*
-
-Fill in details of your final project below. You can remove this instructions-section from the README-file if you want.
-
-## Topic: 
-This repository contains the Access Viz tool, a GIS‑based application developed for the Helsinki Region to
-- visualize and compare travel times and distances across different travel modes
-- visualize and compare travel‑time differences between two travel‑time datasets from different years
-- visualize shortest path routes (walking, cycling, and/or driving) 
 
 ### Structure of this repository:
 This repository consists of a [Jupyter notebook](final-assignment.ipynb) and a [function.py file](function.py). Inside the function.py file, Function 1 creates an interactive YKR grid index map, and Function 29 serves as the Access Viz tool. Function 30, which present the additional function of this tool, uses to visualize shortest path routes (walking, cycling, and/or driving) using OpenStreetMap data. All remaining functions are used within the Access Viz tool for data input, processing, and map visualization.
