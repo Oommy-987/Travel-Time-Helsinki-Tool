@@ -1,2 +1,101 @@
-# Travel-Time-Helsinki-Tool
-This GIS tool is designed to visualize and compare travel times across different modes of transportation in the Helsinki region.
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/tWyQ2Yyn)
+# Final Assignment
+
+### Status
+
+Once you are finished with the final assignment, edit this readme and add "x" to the correct box:
+
+* [x] Submitted
+
+* [ ] I'm still working on my final assignment. 
+
+
+*If you have done this assignment in pair, write your groupmate's name here:* ----
+
+The final deadline for submission is **6.1.2026**.
+
+
+### Instructions
+
+*you can remove these instructions for the final submission*
+
+Read the final assignment instructions from the course webpages [https://autogis-site.readthedocs.io](https://autogis-site.readthedocs.io/en/latest/final-assignment/final-assignment.html). Remember to write readable code, and to provide adequate documentation using inline comments and markdown. Organize all your code(s) / notebook(s) into this repository and **add links to all relevant files to this `README.md`file**. In sum, anyone who downloads this repository should be able to **read your code and documentation** and understand what is going on, and **run your code** in order to reproduce the same results! :) 
+
+**Modify this readme so that anyone reading it gets a quick overview of your final work topic, and finds all the necessary input data, code and results.** 
+
+*Note: If your code requires some python packages not found in the csc notebooks environment, please mention them also in this readme and provide installation instrutions.*
+
+*Note: Don't upload large files into GitHub! If you are using large input files, provide downloading instructions and perhaps a small sample of the data in this repository for demonstrating your workflow.*
+
+Fill in details of your final project below. You can remove this instructions-section from the README-file if you want.
+
+## Topic: 
+This repository contains the Access Viz tool, a GIS‑based application developed for the Helsinki Region to
+- visualize and compare travel times and distances across different travel modes
+- visualize and compare travel‑time differences between two travel‑time datasets from different years
+- visualize shortest path routes (walking, cycling, and/or driving) 
+
+### Structure of this repository:
+This repository consists of a [Jupyter notebook](final-assignment.ipynb) and a [function.py file](function.py). Inside the function.py file, Function 1 creates an interactive YKR grid index map, and Function 29 serves as the Access Viz tool. Function 30, which present the additional function of this tool, uses to visualize shortest path routes (walking, cycling, and/or driving) using OpenStreetMap data. All remaining functions are used within the Access Viz tool for data input, processing, and map visualization.
+
+### Input data:
+The travel time input data is derived from the Helsinki Region Travel Time Matrix (2013, 2015, and 2018), which reports travel times and distances between all 250 m × 250 m grid‑cell centroids (n = 13,231) in the Helsinki Capital Region for walking, cycling, public transport, and car travel. A small sample of the input data is saved inside [the data folder/](data/) according to different year. Please note that the filepath must not be changed. If users want to include additional datasets, they can download them from [here](https://blogs.helsinki.fi/accessibility/helsinki-region-travel-time-matrix/). Simply place the downloaded files into the designated folder. The subfolder structure should be the same as the sample. No need to change anything of the downloaded file.
+
+The MetropAccess-YKR-grid.shp and HSL Transif Zone.gpkg file are also saved inside data folder [data/](data/). Please note that the filepath must not be changed.
+
+Data from OpenStreetMap data is used to calculate the shortest path route. 
+
+### Analysis steps:
+The first step in the Access Viz tool is to ensure that all input parameters follow the required format defined in the code. All assertion‑related checks are implemented in Function 28, which raises an assertion error if any parameter is invalid. If the travel‑time file contains no data, or if the selected transport mode has no data within that file, an assertion error is raised. Refer to [Jupyter notebook](final-assignment.ipynb) for more guidance.
+
+Once the input parameters are validated, the tool retrieves the travel‑time data file from the [the data folder/](data/) and joins it with the `YKR grid` to create a GeoDataFrame. The `vector_type` and `vector_output_folder` allows the users to export the file as a `.shp` or `.gpkg` file in a defined folder. The tool then generate the map of the specified `transport_mode` in each item of `year_ykr`. The map can be either a static or interactive map based on `map_type`. The user can define the map output folder in `map_output_folder`.
+
+The tool can run without `mode_cmp` or `grid_cmp`. If `mode_cmp` is provided, the tool computes the travel‑time or distance differences and produces the corresponding static or interactive map. If `grid_cmp` is provided, the tool calculates the travel‑time differences between two files, creates a new DataFrame to store these values, and allows exporting it as `.shp` or `.gpkg`. A static or interactive map is then generated according to the `map_type`. The user can define the map output folder in `map_output_folder`. Please note that any travel‑time file used in `grid_cmp` must also be included in the `year_ykr`parameter since travel time data file search is based on the `year_ykr`parameter ONLY.
+
+`interactive_map_display` allows the user to decide whether the interactive map should be shown directly in the Jupyter notebook. Displaying too many interactive maps can cause the notebook to exceed its storage limits, especially on the Noppe platform. Static maps are always displayed in the Jupyter notebook. If `interactive_map_display` is set to `None`, the interactive map will only be saved. 
+
+The function.py file contains plotting functions designed separately for static and interactive maps. The overall logic is to consolidate all shared map elements into a base function and then append map‑specific components as needed.
+
+The tool output spatial file (.shp or .gpkg) and map (.png or .html) accordingly. 
+
+- txt file of the travel time filepath
+
+For each item in the `year_ykr`parameter:
+- travel time data.shp OR .gpkg
+- static map OR interactive map showing the travel time data
+
+If `mode_cmp` is provided:
+For each item in the `year_ykr`parameter:
+- static map OR interactive map showing the travel time/distance difference
+
+If `grid_cmp` is provided:
+- travel time difference between two files.shp OR .gpkg
+- static map OR interactive map showing the travel time difference between two files
+
+For the additional function of this tool, the shortest possible path route is calculated using the data from the OpenStreetMap using OSMnx package
+
+### Results:
+The output map comprises of the travel time data, annotated HSL zone and the destination marker. Therefore, users can easily visualize the spatial relationship of different area based on the travel time data file. In addition, the additional function of this tool allow calculating and visualizing the shortest possible path route.
+
+### References:
+- Travel time data: Digital Geography Lab
+- Helsinki Region Transport tariff zones: Helsinki Region Infoshare
+- Basemap: OpenStreetMap contributors
+        
+
+### Use of AI:
+I used AI-LLM in this assignment in several aspects.
+- I asked AI "Please help identify repetitive tasks in my code". The reason for asking this question is that my codebook is so long, so it is quite difficult to identify repetitive code. And AI provided me some answers for example: suggest me to write a CRS. conversion function (Function 2) and function to extract destination centroid (Function 3). I have origianlly written the code, so i just need to reformat them in a function.
+
+- Sometimes, the code runs into error which I did not expect. After browsing the code by myself several times, I think the logic is valid but still dont understand why the code fails. Then, I paste a small portion of the code to AI to ask for debug. And the common issue is usually some typo, like missing parameter in the function coz I got so many variables. One only logic bug happens in Function 29 which I forgot to collect all of the generated map in a list to print them. After checking with AI, I undertstand why a list is needed. Since the tool produces a lot of map. If I dont do that, the tool will only return the first set of map.
+
+- My original task does not include working on the comparsion of grid file from two different years. When I finished enhancing my code to incorporate this part, I found that there is some design flaw in my code. If the user defines ["2018_5785642","2015_5785642"] in `year_ykr` and they also want to compare them in `grid_cmp`, the tool would search the travel time file again for one more time. But this is redundant. Therefore, I uploaded the whole file and describe this situaition to AI and ask for any suggestions to enhance the code. AI replied me that I can saved the file path in a dictionary `grid_lookup`. This allows searching the folder only once. But AI return some more useless amendment. So I digested the AI informaiton and only modify the mode which suit my need. In addition, I also manually added a assertion error to preventing user defining travel time data file which is not defined in the `year_ykr`. 
+
+*edit according to your submission:*
+- Literature related to the topic
+- Links to websites, tutorials books or articles that you found useful
+
+
+
+### Feedback
+-
